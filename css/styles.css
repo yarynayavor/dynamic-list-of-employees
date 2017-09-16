@@ -61,7 +61,7 @@ button.addEmployee:hover {
 
 #employeeList .employeeFirstName {
 	margin-left: 30px;
-	width: 15%;
+	width: 20%;
 }
 
 #employeeList .fixing-f-n {
@@ -85,15 +85,15 @@ button.addEmployee:hover {
 }
 
 #employeeList .employeeLastName {
-	width: 15%;
+	width: 20%;
 }
 
 #employeeList .employeeSalary {
-	width: 17%;
+	width: 20%;
 }
 
 #employeeList .employeePosition {
-	width: 36%;
+	width: 22%;
 }
 
 #employeeList .employeeDelete, #delete{
@@ -111,9 +111,10 @@ button.addEmployee:hover {
 	transition: all 1.2s ease;
 }
 
-#inSystem, #averageSalary {
+#inSystem, #averageSalary, #setLimit {
 	font-size: 24px;
 	font-family: 'Josefin Slab', serif;
+	margin:5px 0 0;
 }
 
 .employeeUserIcon {
@@ -124,6 +125,11 @@ button.addEmployee:hover {
 	position: relative;
 	top:12px;
 	left:20px;
+}
+
+#limit {
+	width:60px;
+	padding: 5px;
 }
 
 form {

@@ -78,11 +78,23 @@ function showAverageSalary() {
 		averageSalary.textContent = "Average salary:  "+"$ "+average.toFixed(2);
 	}
 	averageSalary.textContent = "Average salary:  "+"$ "+ average.toFixed(2);
+	return average;
 }
 showAverageSalary();
 
+// function checkDublicatesAnothers() {
+// 	var getFirstName=document.getElementsByClassName("fixing-f-n");
+// 	var getLastName=document.getElementsByClassName("fixing-l-n");
+// 	for (var i = 0; i < getFirstName.length; i++) {
+// 		var valueFn=getFirstName[i].textContent;
+// 	}
+// 	for (var j = 0; j < getLastName.length; j++) {
+// 		var valueLn=getLastName[j].textContent;
+// 	}
+// 	return valueFn+ " "+valueLn;
+// }
+
 $('.addEmployee').click(function (e) {
-	
 	$('.pop-up').toggle(1000);
 });
 
@@ -90,20 +102,26 @@ $('#delete').click(function (e) {
 	$('.pop-up').fadeOut(700);
 });
 
-
 $('.button').click(function (e) {
-
 	firstname=document.getElementById('firstname').value;
 	lastname=document.getElementById('lastname').value;
 	salary=document.getElementById('salary').value;
 	position=document.getElementById('position').value;
+    limit=document.getElementById('limit').value;
+
+	var average=showAverageSalary(); 
+
+	var checkdubl=checkDublicates(firstname,lastname);
+	// var checkdublAnothers=checkDublicatesAnothers();
+	
+	var maxLength = 14;
+	var maxLengthSalary = 10;
 
 	checkIfLetters=/^[a-zA-Z]+$/;
 
 	if((firstname==='') && (lastname==='') && (position==='') && (salary==='')){
       alert("You entering nothing. Fix this. ");
     }
-
     else if((firstname==='') || (lastname==='') || (position==='') || (salary==='')){
       if(firstname==='') {
       	alert("You forget entering First Name. Fix this. ");
@@ -118,15 +136,12 @@ $('.button').click(function (e) {
       	alert("You forget entering Position. Fix this. ");
       }
     }
-
 	else if((!firstname.match(checkIfLetters)) || (!lastname.match(checkIfLetters)) || (!position.match(checkIfLetters))){
       alert("Ivalid data! Are you entering First Name,Last Name and Position correctly(not numbers!? only letters?! IN ENGLISH?!) ?");
     }
-
     else if(salary==0) {
     	alert("Salary can't be zero. Fix this. ");
     }
-
     else if(salary<0) {
       	alert("Salary can't be negative. Fix this. ");
     }
@@ -134,17 +149,56 @@ $('.button').click(function (e) {
     else if(~salary.indexOf("e")) {
     	alert("Salary can't be writing in exponent. Fix this. ");
     }
-
+    else if((firstname.length>maxLength) || (lastname.length>maxLength) || (position.length>maxLength) || (salary.length>maxLengthSalary)){
+      if(firstname.length>maxLength) {
+      	alert("First Name is too big. Please write shortly. Max length 13. ");
+      }
+      if(lastname.length>maxLength) {
+      	alert("Last Name is too big. Please write shortly. Max length 13.");
+      }
+      if(salary.length>maxLengthSalary) {
+      	alert("Salary is too big. Please write shortly. Max length 10. ");
+      }
+      if(position.length>maxLength) {
+      	alert("Position is too big. Please write shortly. Max length 13. ");
+      }
+    }
+    else if((average>2000) || (li.length==limit) || (checkdubl)){
+    	if(average>2000) {
+    		alert("Oops... Average Salary is more than $2000 We can't add new employees!");
+    	}
+    	if(li.length==limit) {
+    		alert("Oops... Limit is: "+limit+". We can't add new employees!");
+    	}
+    	if(checkdubl) {
+    		alert("Oops.. <"+firstname+" "+lastname+ "> already ecxist in our system. Plese,enter another name!");
+    	}
+    }
     else {
     	$('.pop-up').fadeOut(700);
     	addingEmployee();
     	removeEmployee();
     	showNumbersOfEmployees();
     	showAverageSalary();
+    	checkDublicates(firstname,lastname);
     	getEmpty();
     } 
   });
 
+function checkDublicates(fname,lname) {
+	var getFirstName=document.querySelectorAll(".employeeFirstName");
+	var getLastName=document.querySelectorAll(".employeeLastName");
+	// firstname=document.getElementById('firstname').value;
+	// lastname=document.getElementById('lastname').value;
+	//debugger;
+	//var enterdubl=fName+" "+lName;
+	for (var i = 0; i < getFirstName.length; i++) {
+			if((getFirstName[i].textContent.toLowerCase()==fname.toLowerCase()) &&  (getLastName[i].textContent.toLowerCase()==lname.toLowerCase())){
+				return true;
+			}
+	}
+	return false;
+}
 function removeEmployee() {
 	button=document.querySelectorAll('.employeeDelete');
 	for (i = 0; i < button.length; i++) {
