@@ -27,7 +27,7 @@ function addingEmployee() {
 	newEmployeeList.appendChild(fnSpan);
 
 	var lnSpan = document.createElement('span');
-	var lnText = document.createTextNode(" "+lastname); 
+	var lnText = document.createTextNode(lastname); 
 	lnSpan.appendChild(lnText); 
 	lnSpan.classList.add('employeeLastName','fixing-l-n');
 	newEmployeeList.appendChild(lnSpan); 
@@ -82,18 +82,6 @@ function showAverageSalary() {
 }
 showAverageSalary();
 
-// function checkDublicatesAnothers() {
-// 	var getFirstName=document.getElementsByClassName("fixing-f-n");
-// 	var getLastName=document.getElementsByClassName("fixing-l-n");
-// 	for (var i = 0; i < getFirstName.length; i++) {
-// 		var valueFn=getFirstName[i].textContent;
-// 	}
-// 	for (var j = 0; j < getLastName.length; j++) {
-// 		var valueLn=getLastName[j].textContent;
-// 	}
-// 	return valueFn+ " "+valueLn;
-// }
-
 $('.addEmployee').click(function (e) {
 	$('.pop-up').toggle(1000);
 });
@@ -110,10 +98,7 @@ $('.button').click(function (e) {
     limit=document.getElementById('limit').value;
 
 	var average=showAverageSalary(); 
-
 	var checkdubl=checkDublicates(firstname,lastname);
-	// var checkdublAnothers=checkDublicatesAnothers();
-	
 	var maxLength = 14;
 	var maxLengthSalary = 10;
 
@@ -163,15 +148,15 @@ $('.button').click(function (e) {
       	alert("Position is too big. Please write shortly. Max length 13. ");
       }
     }
-    else if((average>2000) || (li.length==limit) || (checkdubl)){
+    else if((average>2000) || ((li.length==limit) || (li.length>limit)) || (checkdubl)){
     	if(average>2000) {
     		alert("Oops... Average Salary is more than $2000 We can't add new employees!");
     	}
-    	if(li.length==limit) {
+    	if((li.length==limit) || (li.length>limit)) {
     		alert("Oops... Limit is: "+limit+". We can't add new employees!");
     	}
     	if(checkdubl) {
-    		alert("Oops.. <"+firstname+" "+lastname+ "> already ecxist in our system. Plese,enter another name!");
+    		alert("Oops.. \'"+firstname+" "+lastname+ "\' already exist in our system. Plese,enter another name!");
     	}
     }
     else {
@@ -180,7 +165,6 @@ $('.button').click(function (e) {
     	removeEmployee();
     	showNumbersOfEmployees();
     	showAverageSalary();
-    	checkDublicates(firstname,lastname);
     	getEmpty();
     } 
   });
@@ -188,17 +172,17 @@ $('.button').click(function (e) {
 function checkDublicates(fname,lname) {
 	var getFirstName=document.querySelectorAll(".employeeFirstName");
 	var getLastName=document.querySelectorAll(".employeeLastName");
-	// firstname=document.getElementById('firstname').value;
-	// lastname=document.getElementById('lastname').value;
-	//debugger;
-	//var enterdubl=fName+" "+lName;
 	for (var i = 0; i < getFirstName.length; i++) {
-			if((getFirstName[i].textContent.toLowerCase()==fname.toLowerCase()) &&  (getLastName[i].textContent.toLowerCase()==lname.toLowerCase())){
-				return true;
-			}
+		var valueFn=getFirstName[i].textContent;
+		var valueLn=getLastName[i].textContent;
+		if((valueFn.toLowerCase()==fname.toLowerCase()) &&
+		   (valueLn.toLowerCase()==lname.toLowerCase())) {
+			return true;
+		}
 	}
 	return false;
 }
+
 function removeEmployee() {
 	button=document.querySelectorAll('.employeeDelete');
 	for (i = 0; i < button.length; i++) {
