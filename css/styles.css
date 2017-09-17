@@ -1,0 +1,215 @@
+body {
+	text-align: center;
+	background: url("../img/business.jpg") no-repeat center center fixed;
+	background-size: cover;
+}
+
+h1 {
+	font-size: 45px;
+	text-shadow: 2px 2px #fff;
+	color:#001933;
+	font-family: 'Josefin Slab', serif;
+	letter-spacing: 2px;
+}
+
+ul li {
+	list-style-type: none;
+	text-align: left;
+	background: rgba(121, 205, 231, 0.5);
+	border-radius: 10px;
+	border:1px solid #198cff;
+	margin-bottom: 5px;
+	padding: 10px 0;
+}
+
+div.block {
+	width: 60%;
+	margin: 0 auto;
+}
+
+button.addEmployee {
+	width: 200px;
+	margin:20px auto;
+	padding: 10px 0;
+	border-radius: 5px;
+	border:1px solid #fff;
+	background-color: #66b2ff;
+	color:#fff;
+	font-family: 'Josefin Slab', serif;
+	font-size: 18px;
+	outline: 0;
+	-webkit-transition: all 1.1s ease;
+    transition: all 1.1s ease;
+    cursor:pointer;
+}
+
+button.addEmployee:hover {
+	color:#000099;
+	border:1px solid #66b2ff;
+	background-color: #fff;
+	-webkit-transition: all 1.1s ease;
+    transition: all 1.1s ease;
+}
+
+#employeeList li span {
+	font-size: 20px;
+	font-weight: bold;
+	display: inline-block;
+	font-family: 'Josefin Slab', serif;
+	margin-top: -20px;
+}
+
+#employeeList .employeeFirstName {
+	margin-left: 30px;
+	width: 20%;
+}
+
+#employeeList .fixing-f-n {
+	margin-left: 33px;
+}
+
+.fixing-l-n {
+	margin-left: 3px;
+}
+
+.fixing-sal {
+	margin-left: 6px;
+}
+
+.fixing-pos {
+	margin-left: 3px;
+}
+
+.fixing-del {
+	margin-left: 5px;
+}
+
+#employeeList .employeeLastName {
+	width: 20%;
+}
+
+#employeeList .employeeSalary {
+	width: 20%;
+}
+
+#employeeList .employeePosition {
+	width: 22%;
+}
+
+#employeeList .employeeDelete, #delete{
+	color:#fff;
+	font-size: 14px;
+	padding: 4px 7px 4px 6px;
+	-webkit-transition: all 1.2s ease;
+	transition: all 1.2s ease;
+}
+
+#employeeList .employeeDelete:hover, #delete:hover{
+	background: rgba(244, 1, 1, 0.7);
+	border-radius: 100%;
+	-webkit-transition: all 1.2s ease;
+	transition: all 1.2s ease;
+}
+
+#inSystem, #averageSalary, #setLimit {
+	font-size: 24px;
+	font-family: 'Josefin Slab', serif;
+	margin:5px 0 0;
+}
+
+.employeeUserIcon {
+	background: url("../img/usericon.png") no-repeat ;
+	background-size: contain;
+	width: 40px;
+	height: 40px;
+	position: relative;
+	top:12px;
+	left:20px;
+}
+
+#limit {
+	width:60px;
+	padding: 5px;
+}
+
+form {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+    flex-direction: column;
+}
+
+input[type="text"],input[type="number"] {
+	margin-top: 10px;
+	padding: 15px 20px;
+	border-radius: 5px;
+	border:2px solid #66b2ff;
+	background-color: #e5e5ff;
+	font-family: 'Josefin Slab', serif;
+	font-size: 16px;
+}
+
+label {
+	align-self: center;
+    margin-top: 10px;
+    font-family: 'Josefin Slab', serif;
+	font-size: 20px;
+	font-weight: bold;
+	color: #fff;
+	text-shadow: 1px 1px #66b2ff;
+}
+
+#delete {
+	position: absolute;
+	top:15px;
+	right:20px;
+}
+
+/*******************************/
+
+.pop-up {
+	position: fixed;
+	width: 30%;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+	z-index: 2;
+}
+
+.box {
+	background: #000c19;
+	border-radius: 15px;
+	border:1px solid #fff;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10%;
+	position: relative;
+	-webkit-box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.1);
+	-moz-box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.1);
+	box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.1);
+}
+
+.button {
+	margin: 20px auto;
+	padding: 10px 15px;
+	border-radius: 5px;
+	background-color: #66b2ff;
+	color:#fff;
+	font-family: 'Josefin Slab', serif;
+	font-size: 20px;
+	font-weight: bold;
+	text-decoration: none;
+	-webkit-transition: all 1.1s ease;
+	transition: all 1.1s ease;
+}
+
+.button:hover {
+	background-color: #e5f2ff;
+	color:#66b2ff;
+	-webkit-transition: all 1.1s ease;
+    transition: all 1.1s ease;
+	-webkit-box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.1);
+	-moz-box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.1);
+	box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.1);
+}
