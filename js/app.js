@@ -1,5 +1,9 @@
+/* 
+* hide pop-up form which adding new employees
+*/
 $('.pop-up').hide();
 
+/*get elements by ID*/
 firstname=document.getElementById('firstname').value;
 lastname=document.getElementById('lastname').value;
 salary=document.getElementById('salary').value;
@@ -8,11 +12,13 @@ position=document.getElementById('position').value;
 list = document.getElementById('employeeList');
 li = list.getElementsByTagName('li');
 
+/*function which reset form after first adding new employee*/
 function getEmpty() {
 	var myform=document.getElementById('myform');
 	myform.reset();
 }
 
+/*function which dynamically add new employee to system*/
 function addingEmployee() {
 	var newEmployeeList = document.createElement('li');
 
@@ -55,12 +61,14 @@ function addingEmployee() {
 	list.appendChild(newEmployeeList);
 }
 
+/*function which shows all employees in system now*/
 function showNumbersOfEmployees() {
 	var inSystem = document.getElementById('inSystem');
 	inSystem.textContent = "Employees in system: "+ li.length;
 }
 showNumbersOfEmployees();
 
+/*function which shows average salary from all employees in system now*/
 function showAverageSalary() {
     var getSalary=document.querySelectorAll('.employeeSalary');
     var matchSalaryArr=[];
@@ -82,13 +90,27 @@ function showAverageSalary() {
 }
 showAverageSalary();
 
+/*
+* jquery event when button 'Add new employee' clicked 
+* shows pop-up form which adding new employees
+*/
 $('.addEmployee').click(function (e) {
 	$('.pop-up').toggle(1000);
 });
 
+/*
+* jquery event when 'Add new employee' clicked 
+* we can exit from this pop-up
+*/
 $('#delete').click(function (e) {
 	$('.pop-up').fadeOut(700);
 });
+
+/*
+* jquery event when 'Submit' clicked 
+* this buttons add new employee to system if no problems or 
+* show some problems why new employee can't be added
+*/
 
 $('.button').click(function (e) {
 	firstname=document.getElementById('firstname').value;
@@ -169,6 +191,10 @@ $('.button').click(function (e) {
     } 
   });
 
+/* This function check if entered employee is in system
+* check for dublicates as example you can't add two 
+* employees with same First Name and Last Name
+*/
 function checkDublicates(fname,lname) {
 	var getFirstName=document.querySelectorAll(".employeeFirstName");
 	var getLastName=document.querySelectorAll(".employeeLastName");
@@ -183,6 +209,9 @@ function checkDublicates(fname,lname) {
 	return false;
 }
 
+/* This function deletes employee which is in system
+* slowly with jquery animation effect
+*/
 function removeEmployee() {
 	button=document.querySelectorAll('.employeeDelete');
 	for (i = 0; i < button.length; i++) {
